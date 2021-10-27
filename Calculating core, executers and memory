@@ -1,0 +1,23 @@
+Calculating core, executers and memory:
+
+Consider if we have 10 Node and 16 cores per Node. Each Node represents 64GB RAM.
+5 core per executors.
+
+ 1.) If we want to find total number of cores:
+      10 (Node) * 16 (cores per node) = 160
+      
+ 2.) If we want to find available number of core:
+      [ note: Always consider one core per Node will be assigned for OS function. In our case, we are having 10 cores. If we take a core from every node, we will have 5 remaing per Node.]
+      160 (Total number of cores) - 10 (Remaining cores per node)  = 150
+      
+ 3.) If we want to find number of core per Machine:
+      150 (Available Node) / 5 (core per executors) = 30
+      
+      29
+  
+ 4.)  If we want to find available executor per node:
+      30 (Available core) / 10 (Node) = 3
+      
+ 64GB/3 = 21GB
+ 
+ Counting off heap overhead = 7% of 21GB = 3GB. So, actual --executor-memory = 21 - 3 = 18GB
